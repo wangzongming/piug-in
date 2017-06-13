@@ -36,10 +36,7 @@
 */
     function Banner(obj,datas){//Banner构造函数
         this.obj=obj;//容纳轮播图的div
-        this.datas={
-            //  width:"700px",//轮播图片的宽
-            //  height:400//轮播图片的高
-        };//主要数据存放对象
+        this.datas={};//主要数据存放对象
         str='';
         str+='<ul class="banner_ul">';
             $.each(datas.imgArr,function(i,v){
