@@ -36,7 +36,7 @@
 
 */
     function Banner(obj,datas){//Banner构造函数
-        this.obj=obj;
+        this.obj=obj;//容纳轮播图的div
         var obj_class;
         if(obj[0].className){
             obj_class="."+obj[0].className
