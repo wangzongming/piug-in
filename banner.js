@@ -1,6 +1,7 @@
 
 /*
     by : 1746809408@qq.com
+    
     说明：
     jq-cdn:必须写到页面
      <script src="https://cdn.bootcss.com/jquery/3.2.1/core.js"></script>
@@ -8,7 +9,7 @@
     数据基本都是默认的  
     fangxiang:"left"/"right",  此项必填...
 <script>
-   var banner_con=$(".banner");//轮播图容器
+   var banner_con=$(".banner");//轮播图容器 id或者class
     //和样式写法和css写法完全一样 单位px
     var banner=new Banner(banner_con,{
         width:800,//轮播图片的宽
@@ -36,6 +37,12 @@
 */
     function Banner(obj,datas){//Banner构造函数
         this.obj=obj;//容纳轮播图的div
+        var obj_class;
+        if(obj[0].className){
+            obj_class="."+obj[0].className
+        }else{
+            obj_class="#"+obj[0].id
+        }
         this.datas={};//主要数据存放对象
         str='';
         str+='<ul class="banner_ul">';
@@ -61,8 +68,9 @@
             position:"relative",
         });
         
-        obj.html(str);//哈
-        $(".banner_li").css({//每个li的样式
+       obj.html(str);//哈
+
+        $(obj_class+" .banner_li").css({//每个li的样式
             width:datas.width || 1000,
             height:datas.height || 300,
             "list-style":"none",
@@ -71,21 +79,21 @@
             top:0,
             left:0,
             display:"none",
-        });
-         $(".banner_li:first").css({
+        }); 
+         $(obj_class+" .banner_li:first").css({
              display:"block"
          })
-        $(".banner_ul").css({
+        $(obj_class+" .banner_ul").css({
              margin:0,padding:0,
         })
-        $(".banner_li>img").css({//每个img的样式
+        $(obj_class+" .banner_li>img").css({//每个img的样式
             width:datas.width || 1000,
             height:datas.height || 300,
             "list-style":"none",
             margin:0,padding:0,
             vercital:"middle",
         });
-        $(".banner_left,.banner_right").css({//左右按钮
+        $(obj_class+" .banner_left,"+obj_class+" .banner_right").css({//左右按钮
             display:"inline-block",
             "text-decoration":"none",
             color:datas.btn_tcolor || "white",
@@ -102,13 +110,13 @@
             "z-index":"99",
             "cursor":"pointer",
         });
-        $(".banner_left").css({
+        $(obj_class+" .banner_left").css({
             left:0,
         });
-         $(".banner_right").css({
+         $(obj_class+" .banner_right").css({
             right:0,
         });
-        $(".banner_left,.banner_right").hover(function(){//左右按钮效果
+        $(obj_class+" .banner_left,"+obj_class+" .banner_right").hover(function(){//左右按钮效果
             $(this).css({
                 width:"+=15px",
                 transition:"0.3s"
@@ -119,7 +127,7 @@
                 transition:"0.3s"
             });
         });
-        $(".yd").css({//小圆点
+        $(obj_class+" .yd").css({//小圆点
             position:"absolute",
             width:"100%",
             "text-align":"center",
@@ -129,7 +137,7 @@
             bottom:10,
             "z-index":99,
         });
-        $(".yd_li").css({//小圆点li
+        $(obj_class+" .yd_li").css({//小圆点li
             "list-style":"none",
             width:datas.yd_width || 20,
             height:datas.yd_height || 3,
@@ -141,55 +149,55 @@
             background:datas.yd_color || "rgba(0,191,255,0.5)",
             "cursor":"pointer",
         });
-        $(".yd_li:first").css({
+        $(obj_class+" .yd_li:first").css({
             background:datas.yd_colored || "yellow"
         })
         //功能实现
-        var index=0,t=null;
-        $(".banner_right").click(function(){//左点击
+        var index=0;
+       
+        $(obj_class+" .banner_right").click(function(){//左点击
              index++;
-            if(index>=$(".banner_li").length){
+            if(index>=$(obj_class+" .banner_li").length){
                 index=0;
             }
-            $(".yd_li").eq(index).css({ background:datas.yd_colored || "yellow"}).siblings().css("background",datas.yd_color || "rgba(0,191,255,0.5)");
-            $(".banner_li").eq(index).fadeIn(datas.fadeTime || 700).siblings(".banner_li").hide(10);
+            $(obj_class+" .yd_li").eq(index).css({ background:datas.yd_colored || "yellow"}).siblings().css("background",datas.yd_color || "rgba(0,191,255,0.5)");
+            $(obj_class+" .banner_li").eq(index).fadeIn(datas.fadeTime || 700).siblings(obj_class+" .banner_li").hide(10);
         });
-        $(".banner_left").click(function(){//右点基
+        $(obj_class+" .banner_left").click(function(){//右点基
              index--;
             if(index<0){
-                index=$(".banner_li").length-1;
+                index=$(obj_class+" .banner_li").length-1;
             }
-            $(".yd_li").eq(index).css({background:datas.yd_colored || "yellow"}).siblings().css("background",datas.yd_color || "rgba(0,191,255,0.5)");//圆点
-            $(".banner_li").eq(index).fadeIn(datas.fadeTime || 700).siblings(".banner_li").hide(10);
+            $(obj_class+" .yd_li").eq(index).css({background:datas.yd_colored || "yellow"}).siblings().css("background",datas.yd_color || "rgba(0,191,255,0.5)");//圆点
+            $(obj_class+" .banner_li").eq(index).fadeIn(datas.fadeTime || 700).siblings(obj_class+" .banner_li").hide(10);
         });
         //每个圆点被点击
-        $(".yd_li").click(function(){
+        $(obj_class+" .yd_li").click(function(){
             var m=$(this).index();//小圆点索引
             var n=index-m;//要走的次数
             if(n==0){ return;}
             if(n<0){
                 (function iterator(i=0){
                     if(i>=Math.abs(n)){return};
-                    $(".banner_right").click();
+                    $(obj_class+" .banner_right").click();
                     iterator(i+1)
                 })();
             }else{
                  for(var i=0;i<Math.abs(n);i++){
-                    $(".banner_left").click();
+                    $(obj_class+" .banner_left").click();
                 }
             };
 
         });
-
+        let t=null;
         t=setInterval(function(){//自动轮播
-            // console.log(datas.fa)$(if(datas.fangxiang==undefined){datas.fangxiang=".banner_right"}else{".banner_"+datas.fangxiang}).click();
-           $(".banner_"+datas.fangxiang || ".banner_right").click();//可改值
+           $(obj_class+" .banner_"+datas.fangxiang || obj_class+" .banner_right").click();//可改值
         },datas.time || 2000);
-        $(".banner_ul").hover(function(){//摸上去时干掉定时
+        $(obj_class+" .banner_ul").hover(function(){//摸上去时干掉定时
             clearInterval(t)
         },function(){
             t=setInterval(function(){
-                $((".banner_"+datas.fangxiang) || ".banner_right").click();//可改值
+                $((obj_class+" .banner_"+datas.fangxiang) || obj_class+" .banner_right").click();//可改值
             },datas.time||2000);
         });
 
