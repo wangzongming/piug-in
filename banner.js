@@ -6,7 +6,7 @@
     jq-cdn:必须写到页面
      <script src="https://cdn.bootcss.com/jquery/3.2.1/core.js"></script>
     直接把Banner new出来就行
-    数据基本都是默认的  
+    数据基本都是默认的可改可不改  要改样式请参照我提供的方法
     fangxiang:"left"/"right",  此项必填...
 <script>
    var banner_con=$(".banner");//轮播图容器 id或者class
