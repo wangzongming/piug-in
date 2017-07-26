@@ -13,8 +13,8 @@ function ajax(method,url,data,async,successfn){
 		xhr.send();
 	}
 	xhr.onreadystatechange=function(){
-		if(xhr.readyState==4){
-			if(xhr.status==200){
+		if(xhr.readyState==4){//4.代表通讯读取完成、不代表成功
+			if(xhr.status==200){//成功
 				successfn(xhr.responseText);	
 			}else{
 				alert(xhr.status);
