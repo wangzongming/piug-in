@@ -1,0 +1,59 @@
+//js让浏览器全屏
+//点击全屏
+function requestFullScreen(element) {//参数一般传html标签就好
+    document.getElementsByTagName("body")[0].style.background="#1CB2DE"    
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;    
+    if (requestMethod) {      
+        requestMethod.call(element);    
+    } else if (typeof window.ActiveXObject !== "undefined") {      
+        var wscript = new ActiveXObject("WScript.Shell");    
+        if (wscript !== null) {    
+            wscript.SendKeys("{F11}");    
+        }    
+    }    
+}    
+
+//退出全屏
+function exitFullscreen() {//直接调用就行
+    if(document.exitFullscreen) {
+     document.exitFullscreen();
+    } else if(document.mozCancelFullScreen) {
+     document.mozCancelFullScreen();
+    } else if(document.webkitExitFullscreen) { 
+     document.webkitExitFullscreen();
+    }
+   }
+   
+   -----------------------------
+   
+ //随机生成一组不重复的数，抽奖时可以用到
+function suijishu(n){//参数是要生成的个数 直接调用这个函数即可生成一组不重复的随机数
+    // 定义存放生成随机数的数组 
+    var array=new Array(); 
+    // 循环N次生成随机数 
+    for(var i = 0 ; ; i++){ 
+        // 只生成10个随机数 
+        if(array.length<n){ 
+            generateRandom(n); 
+        }else{ 
+        break; 
+    } 
+    } 
+    // 生成随机数的方法 
+    function generateRandom(count){ 
+        // console.log(data.list.length)
+        var rand = parseInt(Math.random()*count); //这个是从几到几的随机数
+        for(var i = 0 ; i < array.length; i++){ 
+            if(array[i] == rand){ 
+                return false; 
+            } 
+        } 
+        array.push(rand); 
+    } 
+    return array;
+}
+
+----------------------------
+
+
+   
