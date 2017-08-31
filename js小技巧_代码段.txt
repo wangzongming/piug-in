@@ -53,7 +53,32 @@ function suijishu(n){//参数是要生成的个数 直接调用这个函数即�
     return array;
 }
 
-----------------------------
+----------------------------js全屏
+function makeFullScreen(divObj) {
+       //Use the specification method before using prefixed versions
+      if (divObj.requestFullscreen) {
+        divObj.requestFullscreen();
+      }
+      else if (divObj.msRequestFullscreen) {
+        divObj.msRequestFullscreen();
+      }
+      else if (divObj.mozRequestFullScreen) {
+        divObj.mozRequestFullScreen();
+      }
+      else if (divObj.webkitRequestFullscreen) {
+        divObj.webkitRequestFullscreen();
+      } else {
+        var requestMethod = divObj.requestFullScreen || divObj.webkitRequestFullScreen || divObj.mozRequestFullScreen || divObj.msRequestFullScreen || divObj.msRequestFullScreen;
+        if (requestMethod) {      
+            requestMethod.call(divObj);    
+        } else if (typeof window.ActiveXObject !== "undefined") {      
+            var wscript = new ActiveXObject("WScript.Shell");    
+            if (wscript !== null) {    
+                wscript.SendKeys("{F11}");    
+            }
+        }    
+      } 
+}
 
 
    
