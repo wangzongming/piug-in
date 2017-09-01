@@ -1,17 +1,30 @@
 //js让浏览器全屏
-//点击全屏
-function requestFullScreen(element) {//参数一般传html标签就好
-    document.getElementsByTagName("body")[0].style.background="#1CB2DE"    
-    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;    
-    if (requestMethod) {      
-        requestMethod.call(element);    
-    } else if (typeof window.ActiveXObject !== "undefined") {      
-        var wscript = new ActiveXObject("WScript.Shell");    
-        if (wscript !== null) {    
-            wscript.SendKeys("{F11}");    
+----------------------------js全屏
+function makeFullScreen(divObj) {
+       //Use the specification method before using prefixed versions
+      if (divObj.requestFullscreen) {
+        divObj.requestFullscreen();
+      }
+      else if (divObj.msRequestFullscreen) {
+        divObj.msRequestFullscreen();
+      }
+      else if (divObj.mozRequestFullScreen) {
+        divObj.mozRequestFullScreen();
+      }
+      else if (divObj.webkitRequestFullscreen) {
+        divObj.webkitRequestFullscreen();
+      } else {
+        var requestMethod = divObj.requestFullScreen || divObj.webkitRequestFullScreen || divObj.mozRequestFullScreen || divObj.msRequestFullScreen || divObj.msRequestFullScreen;
+        if (requestMethod) {      
+            requestMethod.call(divObj);    
+        } else if (typeof window.ActiveXObject !== "undefined") {      
+            var wscript = new ActiveXObject("WScript.Shell");    
+            if (wscript !== null) {    
+                wscript.SendKeys("{F11}");    
+            }
         }    
-    }    
-}    
+      } 
+}
 
 //退出全屏
 function exitFullscreen() {//直接调用就行
@@ -24,7 +37,7 @@ function exitFullscreen() {//直接调用就行
     }
    }
    
-   -----------------------------
+-----------------------------
    
  //随机生成一组不重复的数，抽奖时可以用到
 function suijishu(n){//参数是要生成的个数 直接调用这个函数即可生成一组不重复的随机数
@@ -53,32 +66,15 @@ function suijishu(n){//参数是要生成的个数 直接调用这个函数即�
     return array;
 }
 
-----------------------------js全屏
-function makeFullScreen(divObj) {
-       //Use the specification method before using prefixed versions
-      if (divObj.requestFullscreen) {
-        divObj.requestFullscreen();
-      }
-      else if (divObj.msRequestFullscreen) {
-        divObj.msRequestFullscreen();
-      }
-      else if (divObj.mozRequestFullScreen) {
-        divObj.mozRequestFullScreen();
-      }
-      else if (divObj.webkitRequestFullscreen) {
-        divObj.webkitRequestFullscreen();
-      } else {
-        var requestMethod = divObj.requestFullScreen || divObj.webkitRequestFullScreen || divObj.mozRequestFullScreen || divObj.msRequestFullScreen || divObj.msRequestFullScreen;
-        if (requestMethod) {      
-            requestMethod.call(divObj);    
-        } else if (typeof window.ActiveXObject !== "undefined") {      
-            var wscript = new ActiveXObject("WScript.Shell");    
-            if (wscript !== null) {    
-                wscript.SendKeys("{F11}");    
-            }
-        }    
-      } 
-}
+------------------------获取网址上的数据
+getUrlParam = function (k) {//获取地址栏参数，k未键名
+	var m = new RegExp("(^|&)" + k + "=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(m);
+	if (r != null) return decodeURI(r[2]); return null;
+};
+//调用   getUrlParam("id"); //浏览器上什么参数就填写什么参数
+
+
 
 
    
