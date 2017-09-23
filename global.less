@@ -1,0 +1,200 @@
+
+//快捷方式 只需引用不需传参 默认颜色是green
+//常用变量 。。。
+@color:#ccc;
+@color1:#141414;
+
+//大小
+.size(@w,@h){
+    width:@w;
+    height:@h;
+}
+//内外边距
+.margin(@ma){
+    margin:@ma;
+}
+.margin(t,@ma){
+    margin-top:@ma;
+}
+.margin(r,@ma){
+    margin-right:@ma;
+}
+.margin(b,@ma){
+    margin-bottom:@ma;
+}
+.margin(l,@ma){
+    margin-left:@ma;
+}
+
+.padding(@pa){
+    padding:@pa;
+}
+.padding(t,@pa){
+    padding-top:@pa;
+}
+.padding(r,@pa){
+    padding-right:@pa;
+}
+.padding(b,@pa){
+    padding-bottom:@pa;
+}
+.padding(l,@pa){
+    padding-left:@pa;
+}
+
+//字体 font
+.f-size(@size:16px){
+    font-size:@size;
+}
+.f-weight(@weight){
+    font-weight:@weight;
+}
+.color(@color){
+    color:@color;
+}
+.f-letter(@s){
+    letter-spacing:@s;
+}
+.f-style(@c,@s){
+    color:@c;
+    font-size:@s;
+}
+
+//text 文本样式
+.t-align(@d){
+    text-align: @d;
+}
+.t-shadow(@foo){
+    text-shadow: @foo;
+}
+
+//border边框
+.border(c){
+    border:1px solid red;
+}
+.bs{
+    box-sizing: border;
+}
+.border(@style){
+    border:@style;
+}
+.border(t,@style){
+    border-top:@style;
+}
+.border(l,@style){
+    border-left:@style;
+}
+.border(b,@style){
+    border-bottom:@style;
+}
+.border(r,@style){
+    border-right:@style;
+}
+.b-radius(@deg){
+    border-radius:@deg;
+}
+.b-radius(t,@style){
+    border-top:@style;
+}
+.b-radius(r,@style){
+    border-right:@style;
+}
+.b-radius(b,@style){
+    border-bottom:@style;
+}
+.b-radius(l,@style){
+    border-left:@style;
+}
+
+//定位
+.position(a,@t:auto,@r:auto,@b:auto,@l:auto){
+    position: absolute;
+    top:@t;
+    right:@r;
+    bottom:@b;
+    left:@l;
+}
+.position(f,@t:auto,@r:auto,@b:auto,@l:auto){
+    position:fixed;
+    top:@t;
+    right:@r;
+    bottom:@b;
+    left:@l;
+}
+.position(r){
+    position: relative;
+}
+
+//清除浮动
+.clearfix{
+    &:after,&:before{
+        content: '';
+        display: table;
+    }
+    &:after{
+        clear:both;
+    }
+}
+
+//background 背景
+.bg(c){
+    background:green;
+}
+.bg(t){
+    background: green;
+}
+.bg(@style){
+    background:@style;
+}
+.bg-p(@p){
+    background-position:@p;
+}
+.bg-s(@s){
+    background-size:@s;
+}
+
+//float
+.float(@float){
+    float:@float;
+}
+
+.transform(@bb){
+    -moz-transform:@bb;
+    -webkit-transform:@bb;
+    -o-transform:@bb;
+    -ms-transform:@bb;
+    transform:@bb;
+}
+
+.display(@style){
+    display: @style;
+}
+
+.display(flex){
+    display:-webkit-flex;
+    display:flex;
+}
+
+.bz{
+    box-sizing: border-box;
+}
+.lh(@h){
+    line-height: @h;
+}
+
+.b-shadow(@style){
+    box-shadow: @style;
+}
+.t-shadow(@style){
+    text-shadow: @style;
+}
+.zi(@num){
+    z-index: @num;
+}
+.cursor{
+    cursor:pointer;
+}
+
+
+
+
