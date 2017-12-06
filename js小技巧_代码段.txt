@@ -76,5 +76,12 @@ getUrlParam = function (k) {//获取地址栏参数，k未键名
 
 
 
+----------------------根据圆 计算圆边上的标点
+  function ang(deg, x, y, r){//获取 圆边上的 某个坐标 ( 角度(0-2), x(圆心x), y(圆心y), r(半径))
+        var _ang = deg * Math.PI;
+        var _x = x + r * Math.sin(_ang);
+        var _y = y - r * Math.cos(_ang);
+	return {x:x, y:y};
+   }
 
    
