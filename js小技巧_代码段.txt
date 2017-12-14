@@ -81,7 +81,7 @@ getUrlParam = function (k) {//获取地址栏参数，k未键名
         var _ang = deg * Math.PI;
         var _x = x + r * Math.sin(_ang);
         var _y = y - r * Math.cos(_ang);
-	return {x:x, y:y};
+	return {x:_x, y:_y};
    }
 
    
