@@ -83,5 +83,12 @@ getUrlParam = function (k) {//获取地址栏参数，k未键名
         var _y = y - r * Math.cos(_ang);
 	return {x:_x, y:_y};
    }
+   
+   getPos(deg, x, y, r){//获取 圆边上的 某个坐标 ( 角度(360), x(圆心x), y(圆心y), r(半径))
+        var hudu = (2*Math.PI / 360) * deg;   //  360/8=45,即45度(这个随个人设置)
+        var _x = x + Math.sin(hudu) * r;    //  95 是圆形中心的坐标X   即定位left 的值
+        var _y = y - Math.cos(hudu) * r;    //  95 是圆形中心的坐标Y   即定位top 的值
+        return {x:_x, y:_y};
+    }
 
    
