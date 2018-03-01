@@ -91,4 +91,28 @@ getUrlParam = function (k) {//获取地址栏参数，k未键名
         return {x:_x, y:_y};
     }
 
+
+--------------------------------
+formatData(date) {//传入时间戳自动格式化时间 返回格式2018/03/01 12:30
+        if (date) {
+            let dataW = new Date(date);//为了格式化时间 用 - 分割
+            let localData = dataW.toLocaleDateString();
+            let localTime = dataW.toLocaleTimeString();
+
+            //格式化时间把上午下午去掉
+            let noCn = /[\u4E00-\u9FA5]/g;
+            localTime = localTime.replace(noCn, '');
+
+            let arrD = localData.split('/');
+            arrD.map((v, i, arr) => {
+                if (v.length === 1) {
+                    return arrD[i] = '0' + v
+                }
+            })
+            dataW = arrD.join('/');
+            return dataW + ' ' + localTime;
+        } else {
+            return date;
+        }
+    }
    
