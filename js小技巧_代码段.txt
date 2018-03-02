@@ -122,3 +122,21 @@ formatData(date) {//传入时间戳自动格式化时间 返回格式2018/03/01 
         }
     }
    
+   ---------------------------
+    //格式化电话号码用于显示
+    telFormat(tel) { //18216811014 => 182 1681 1014
+        if(tel){
+            let arr = tel.split('')
+            let _arr = [];
+            arr.map((v, i) => {
+                _arr.push(v)
+                if (i === 2 || i === 6) {
+                    _arr.push(' ')
+                }
+                return '';
+            })
+            return _arr.join('');
+        }else{
+            return tel
+        } 
+    }
