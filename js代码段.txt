@@ -112,7 +112,8 @@ formatData(date) {//传入时间戳自动格式化时间 返回格式2018/03/01 
             dataW = arrD.join('/');
             return dataW + ' ' + localTime;
 	    
-	    //let myDate = new Date(date);
+	    //24小时制
+	    //let myDate = new Date(date);
             //let _date = myDate.getFullYear() + "-" + sup(myDate.getMonth()) + "-" + sup(myDate.getDate());
             //let _time = sup(myDate.getHours()) + ":" + sup(myDate.getMinutes()) + ":" + sup(myDate.getSeconds());
             //function sup(n) { return (n < 10) ? '0' + n : n; }
