@@ -159,6 +159,29 @@ blobToDataURL(blob, callback) {
 	a.readAsDataURL(blob);
 }
 
+
+----------------------------input触焦后自动滚动到可视区  （body&html 设置了height和overflow 时使用）
+      inputIntoView()
+
+        function inputIntoView(){//所有input触焦后自动出现到可显区域
+            let inps = document.querySelectorAll('input'); 
+            inps.forEach(element => { 
+                element.onfocus = ()=>{ 
+                    setTimeout(() => {
+                        element.style.background = 'orange';
+                        element.scrollIntoView(true);
+                    }, 300);
+                } 
+                element.onblur = ()=>{ 
+                    element.style.background = ''
+                    element.scrollIntoView(false); 
+                } 
+            });
+        }
+    }  
+
+
+
 ============================
 
 Anagrams of string（带有重复项）
