@@ -181,6 +181,20 @@ blobToDataURL(blob, callback) {
     }  
 
 
+------------------------让手机一直震动
+ fna();
+
+function fna(){
+navigator.vibrate(10000);
+setTimeout(function(){
+    fnb();
+}, 10000) 
+}
+
+function fnb(){
+fna();
+}
+
 
 ============================
 
